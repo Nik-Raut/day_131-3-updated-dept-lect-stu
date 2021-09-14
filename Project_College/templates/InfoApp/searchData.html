@@ -1,0 +1,25 @@
+{% extends 'InfoApp/home.html' %}
+
+
+{% block block1 %}
+    <title>Search</title>
+    {% endblock %}
+
+
+<div class="container" >
+<div class="row justify-content-center">
+    <div class="col-8">
+
+{% block block2 %}
+<div class="container">
+<form method="post">
+    {% csrf_token %}
+
+    Enter Name: <input type="text" name="searchName" class="form-control"><br>
+    <button type="submit" class="btn btn-success">Search</button>
+</form>
+</div>
+{% endblock %}
+</div>
+    </div>
+</div>

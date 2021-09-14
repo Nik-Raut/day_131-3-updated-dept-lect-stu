@@ -1,0 +1,48 @@
+{% extends 'Infoapp/home.html' %}
+{% load crispy_forms_tags %}
+
+{% block block1 %}
+    <title>Students List</title>
+    {% endblock %}
+
+
+{% block block2 %}
+<div class="container">
+    <br>
+    <br>
+    <table class="table table-secondary">
+        <tr>
+            <th>Name</th>
+            <th>Roll No</th>
+            <th>Marls</th>
+            <th>Department</th>
+
+        </tr>
+        {% for stu in all_students %}
+        <tr>
+            <td>{{stu.Stu_name}}</td>
+            <td>{{stu.Roll_No}}</td>
+            <td>{{stu.dept_name}}</td>
+
+
+        <td>
+            <a href="{% url 'updateStudent' stu.id %}">
+                <button class="btn btn-info ">Update</button>
+            </a>
+        </td>
+
+        <td>
+            <a href="{% url 'deleteStudent' stu.id %}">
+                <button class="btn btn-danger">Delete</button>
+            </a>
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+<a href="{% url 'addStudent' %}">
+        <button class="btn btn-success">Add Student</button>
+    </a>
+
+    </div>
+        {% endblock %}

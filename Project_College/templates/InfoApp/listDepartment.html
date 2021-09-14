@@ -1,0 +1,50 @@
+{% extends 'Infoapp/home.html' %}
+
+{% block block1 %}
+    <title>Department List</title>
+    {% endblock %}
+
+
+{% block block2 %}
+<div class="container">
+<br>
+    <br>
+<table class="table table-secondary" >
+    <tr>
+        <th>Department_name</th>
+    </tr>
+    {% for i in all_departments %}
+    <tr>
+        <td>{{i.dept_name}}</td>
+        <td>
+            <a href="{% url 'updateDepartment' i.id %}">
+                <button class="btn btn-info ">Update</button>
+            </a>
+        </td>
+
+        <td>
+            <a href="{% url 'deleteDepartment' i.id %}">
+                <button class="btn btn-danger">Delete</button>
+            </a>
+        </td>
+
+        <td>
+            <a href="{% url 'dept_stu' i.id %}">
+                <button class="btn btn-primary">Show Students</button>
+            </a>
+        </td>
+        <td>
+            <a href="{% url 'dept_lect' i.id %}">
+                <button class="btn btn-success">Show Lecturers</button>
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+    <br>
+    <br>
+    <a href="{% url 'addDepartment' %}">
+        <button class="btn btn-success">Add Department</button>
+    </a>
+</div>
+{% endblock %}

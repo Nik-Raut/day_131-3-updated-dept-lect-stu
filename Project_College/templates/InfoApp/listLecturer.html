@@ -1,0 +1,49 @@
+{% extends 'InfoApp/home.html' %}
+{% load crispy_forms_tags %}
+
+ {% block block1 %}
+    <title>Lecturer List</title>
+    {% endblock %}
+
+{% block block2 %}
+<div class="container">
+
+    <br>
+    <br>
+
+    <table class="table table-secondary">
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Lecturer Subject</th>
+            <th>Department</th>
+
+        </tr>
+        {% for lect in all_lecturers %}
+        <tr>
+            <td>{{lect.Lecturer_name}}</td>
+            <td>{{lect.Lecturer_subject}}</td>
+            <td>{% for j in lect.dept_name.all %}
+                {{j}}
+                {% endfor %}
+            </td>
+
+        <td>
+            <a href="{% url 'updateLecturer' lect.id %}">
+                <button class="btn btn-info ">Update</button>
+            </a>
+        </td>
+
+        <td>
+            <a href="{% url 'deleteLecturer' lect.id %}">
+                <button class="btn btn-danger" >Delete</button>
+            </a>
+        </td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+<a href="{% url 'addLecturer' %}">
+        <button class="btn btn-success">Add Lecturer</button>
+    </a>
+</div>
+        {% endblock %}

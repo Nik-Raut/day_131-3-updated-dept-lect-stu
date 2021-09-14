@@ -1,0 +1,65 @@
+{% extends 'InfoApp/home.html' %}
+
+
+
+{% block block1 %}
+    <title>Searched Result</title>
+    {% endblock %}
+
+
+{% block block2 %}
+<div class="container">
+    {% if searched_stu|length < 1 %}
+    <h3>No match Found for student </h3>
+    {% else %}
+    <h3>Student Information </h3>
+    <table class="table table-secondary">
+        <tr>
+            <th>Student Name</th>
+            <th>Roll No</th>
+            <th>Marks</th>
+            <th>Department</th>
+        </tr>
+        {% for stu in searched_stu %}
+        <tr>
+            <td>{{stu.Stu_name}}</td>
+            <td>{{stu.Roll_No}}</td>
+            <td>{{stu.Marks}}</td>
+            <td>{{stu.dept_name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+
+<div class="container">
+    {% if searched_lect|length < 1 %}
+    <h3>No match Found for lecturer </h3>
+    {% else %}
+    <h3>Lecturer Information</h3>
+    <table class="table table-secondary">
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Subject</th>
+            <th>Department</th>
+        </tr>
+        {% for lect in searched_lect %}
+        <tr>
+            <td>{{lect.Lecturer_name}}</td>
+            <td>{{lect.Lecturer_subject}}</td>
+            <td>{% for j in lect.dept_name.all %}
+                    {{j}}
+                {% endfor %}
+            </td></tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <br>
+    <br>
+</div>
+<div class="container">
+    <a href="{% url 'search' %}">
+<input type="submit" value="Back" class="btn btn-success">
+    </a>
+</div>
+{% endblock %}

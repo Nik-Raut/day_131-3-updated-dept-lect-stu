@@ -1,0 +1,35 @@
+{% extends 'Infoapp/home.html' %}
+
+
+{% block block2 %}
+<div class="container">
+    <br>
+    <br>
+
+    <table class="table table-secondary">
+        <tr>
+            <th>Student Name</th>
+            <th>Roll NO</th>
+            <th>Marks</th>
+            <th>Department</th>
+        </tr>
+        {% for stu in all_students %}
+        <tr>
+            <td>{{stu.Stu_name}}</td>
+            <td>{{stu.Roll_No}}</td>
+            <td>{{stu.Marks}}</td>
+            <td>{{stu.dept_name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'deparmentsList' %}">
+    <input type="submit" value="Back" class="btn btn-success">
+    </a>
+</div>
+
+
+
+{% endblock %}
